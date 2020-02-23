@@ -22,6 +22,7 @@ import util.InputValidationDocumentListener;
 import util.IntegerStringValidator;
 import view.AppConstant.Mode;
 import view.AppConstant.Painter;
+import view.AppConstant.Predefined;				// Added from Barblebee
 
 
 @SuppressWarnings("serial")
@@ -152,15 +153,32 @@ public class ControlPanel extends JPanel {
 				parameters.setPainter((Painter) painterComboBox.getSelectedItem());
 			}
 		});
-		
+
+		// Added by barblebee: new JComboBox and listener for selecting predefined matrices/mazes
+		final JComboBox<Predefined> predefinedComboBox = new JComboBox<Predefined>();
+		Predefined[] predefineds = Predefined.values();
+		for (Predefined predefined : predefineds) {
+			predefinedComboBox.addItem(predefined);
+		}
+		predefinedComboBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				parameters.setPainter((Painter) predefinedComboBox.getSelectedItem());
+			}
+		});
+
 		mapGeneratingPanel.setLayout(new GridLayout(0, 1, 2, 2));
+		mapGeneratingPanel.add(new JLabel("Predefined:"));		// added by barblebee
+		mapGeneratingPanel.add(predefinedComboBox);					// added by barblebee
 		mapGeneratingPanel.add(new JLabel("Obstacle [%]:"));
 		mapGeneratingPanel.add(obstaclePercentTextField);
 		mapGeneratingPanel.add(generateMapButton);
 		mapGeneratingPanel.add(clearMapButton);
 		mapGeneratingPanel.add(new JLabel("Toolbox:"));
 		mapGeneratingPanel.add(painterComboBox);
-		
+
+
+
 		/*-------------------------------------------*
 		 *                path search                *
 		 *-------------------------------------------*/

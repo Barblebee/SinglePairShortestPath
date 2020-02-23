@@ -52,8 +52,8 @@ public class AppConstant {
 		public String toString() {
 			return this.name;
 		}
-
 	}
+
 
 	public static enum Mode {
 
@@ -82,5 +82,37 @@ public class AppConstant {
 		}
 
 	}
+
+
+	// Added new enum for items of new JComboBox for selecting predefined matrices (barblebee)
+	public static enum Predefined {
+
+		EXAMPLE1  ("Example1", 		"Select example1 from TallenceCodingContest"),
+		EXAMPLE2  ("Example2", 		"Select example2 from TallenceCodingContest");
+
+		String name;
+		String description;
+
+		Predefined(String name, String description) {
+			this.name = name;
+			this.description = description;
+		}
+
+		public static Predefined getValue(String name) {
+			for (Predefined p : values()) {
+				if (p.name.equals(name)) {
+					return p;
+				}
+			}
+			return null;
+		}
+
+		@Override
+		public String toString() {
+			return this.name;
+		}
+
+	}
+
 
 }

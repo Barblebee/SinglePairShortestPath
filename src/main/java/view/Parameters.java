@@ -2,6 +2,7 @@ package view;
 
 import view.AppConstant.Mode;
 import view.AppConstant.Painter;
+import view.AppConstant.Predefined; 	// added by barblebee
 
 
 public class Parameters {
@@ -10,6 +11,8 @@ public class Parameters {
 	private int animationMs = 10;
 	private int obstaclePercent = 30;
 	private Painter painter = Painter.DESTINATION;
+	private Predefined predefined = Predefined.EXAMPLE1;	// added by barblebee
+
 	private Mode mode = Mode.MAP_EDITING_MODE;
 
 	public int getCellSize() {
@@ -35,6 +38,12 @@ public class Parameters {
 	public void setPainter(Painter painter) {
 		this.painter = painter;
 	}
+
+	public void setPredefined(Predefined predefined) {		// Added by barblebee
+		this.predefined = predefined;
+	}
+
+
 
 	public Mode getMode() {
 		return mode;
